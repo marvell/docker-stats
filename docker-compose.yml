@@ -1,0 +1,18 @@
+influxdb:
+    image: marvell/stats-influxdb
+    volumes:
+        - ./data/influxdb:/data
+statsd:
+    image: marvell/stats-statsd
+    ports:
+        - "8125:8125/udp"
+    links:
+        - influxdb
+grafana:
+    image: marvell/stats-grafana
+    ports:
+        - "80:80"
+    links:
+        - influxdb
+    volumes:
+        - ./data/grafana:/data
