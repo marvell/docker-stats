@@ -1,4 +1,4 @@
-FROM node:4.0
+FROM node:4
 
 RUN set -x && \
 	mkdir -p /opt/statsd && cd /opt/statsd && \

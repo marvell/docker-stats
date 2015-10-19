@@ -1,15 +1,22 @@
 influxdb:
-    image: marvell/stats-influxdb
+    build: ./influxdb
+    restart: always
     volumes:
         - ./data/influxdb:/data
+    ports:
+        - "8083:8083"
+        - "8086:8086"
 statsd:
-    image: marvell/stats-statsd
+    build: ./statsd
+    environment:
+        INFLUXDB_USER: root
+        INFLUXDB_PASS: ${INFLUXDB_PASS}
     ports:
         - "8125:8125/udp"
     links:
         - influxdb
 grafana:
-    image: marvell/stats-grafana
+    build: ./grafana
     ports:
         - "80:80"
     links:

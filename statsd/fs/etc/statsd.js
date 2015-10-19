@@ -4,6 +4,8 @@
     host: "influxdb",
     port: 8086,
     database: "statsd",
+    username: process.env.INFLUXDB_USER,
+    password: process.env.INFLUXDB_PASS,
     flush: {
       enable: true
     },

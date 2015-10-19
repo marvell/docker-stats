@@ -1,6 +1,6 @@
 FROM ubuntu:15.04
 
-ENV INFLUXDB_VERSION 0.9.4.1
+ENV INFLUXDB_VERSION 0.9.4.2
 RUN set -x && \
 	apt-get update -q && \
 	apt-get install -yq curl && \
